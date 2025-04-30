@@ -10,11 +10,15 @@
   <div class="container">
     <h1>Mood Tracker</h1>
     <p>How are you feeling today?</p>
-    <input type="text" id="moodInput" placeholder="Enter your mood"/>
-    <button id="submitMood">Submit</button>
+    <div class="mood-buttons">
+      <button class="mood-btn" data-mood="happy">😊</button>
+      <button class="mood-btn" data-mood="sad">😢</button>
+      <button class="mood-btn" data-mood="angry">😠</button>
+      <button class="mood-btn" data-mood="anxious">😰</button>
+      <button class="mood-btn" data-mood="excited">🤩</button>
+    </div>
     <div id="response"></div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>

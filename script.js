@@ -1,7 +1,5 @@
 // wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function (){
-  const moodInput = document.getElementById("moodInput");
-  const submitButton = document.getElementById("submitMood");
   const responseDiv = document.getElementById("response");
 
   const  moodResponses = {
@@ -12,30 +10,12 @@ document.addEventListener("DOMContentLoaded", function (){
     excited: {text: "Yay! Keep that energy going! 🚀", color: "limegreen"}
   };
 
-  submitButton.addEventListener("click", function (){
-    const mood = moodInput.value.trim().toLowerCase();
-
-    if (mood === "") {
-      responseDiv.textContent = "Please enter your mood!";
-      responseDiv.style.color = "red";
-      return;
-    }
-
-    let found = false;
-    for(let keyword in moodResponses) {
-      if(mood.includes(keyword)) {
-        responseDiv.textContent = moodResponses[keyword].text;
-        responseDiv.style.color = moodResponses[keyword].color;
-        found = true;
-        break;
-      }
-    }
-
-    if(!found) {
-      responseDiv.textContent = `You are feeling: ${mood}`;
-      responseDiv.style.color = "black";
-    }
-
-    moodInput.value = ""; // clear input after submitting
-  })
+  document.querySelectorAll(".mood-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const mood = btn.getAttribute("data-mood");
+      const response = moodResponses[mood];
+      responseDiv.textContent = response.text;
+      responseDiv.style.color = response.color;
+    });
+  });
 });
